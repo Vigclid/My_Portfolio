@@ -415,6 +415,44 @@ export default function Portfolio() {
             </motion.div>
           </div>
         </div>
+        <div className="container mx-auto px-6 mt-8">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <Card className="hover:shadow-lg transition-shadow duration-300 bg-gray-800 border-gray-700">
+                <CardHeader>
+                  <CardTitle className="text-xl text-white">A GAME RENTAL, TRADING SYSTEM</CardTitle>
+                  <CardDescription>Full-stack web application for game selling with renting features</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-300 mb-4">
+                     A full-stack web application for game selling and rental. The platform enables users to browse, 
+                     rent, and purchase games seamlessly. The system was optimized for database performance 
+                     and includes secure transaction handling and 
+                     dynamic content rendering with JSP and JSTL.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {['Java', 'Servlet', 'JSP', 'JSTL', 'SQL Server', 'HTML', 'CSS', 'JavaScript', 'Git'].map((tech) => (
+                      <Badge key={tech} variant="secondary">{tech}</Badge>
+                    ))}
+                  </div>
+                  <div className="flex space-x-4">
+                    <Button variant="outline" size="sm" asChild>
+                      <a href="https://github.com/Vigclid/SteamKarimasu" target="_blank" rel="noopener noreferrer">
+                        <Github className="w-4 h-4 mr-2" />
+                        Source Code
+                      </a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Education & Awards Section */}
