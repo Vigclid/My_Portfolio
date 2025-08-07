@@ -1,0 +1,461 @@
+// Import Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Custom Variables
+:root {
+  --primary-color: #10b981;
+  --primary-dark: #059669;
+  --bg-dark: #111827;
+  --bg-darker: #000000;
+  --bg-card: #1f2937;
+  --text-light: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-color: #374151;
+}
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+// Custom Bootstrap overrides
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  
+  &:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+  }
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  
+  &:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+}
+
+.btn-outline-light {
+  &:hover {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+  }
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.badge {
+  &.bg-light {
+    background-color: var(--bg-card) !important;
+    color: var(--text-light) !important;
+    border: 1px solid var(--border-color);
+  }
+  
+  &.bg-outline-primary {
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color);
+  }
+}
+
+// Navigation
+.custom-navbar {
+  background: rgba(17, 24, 39, 0.9) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  
+  .navbar-brand {
+    color: var(--text-light) !important;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  
+  .nav-link {
+    color: var(--text-muted) !important;
+    border: none !important;
+    background: none !important;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: var(--text-light) !important;
+    }
+    
+    &.active {
+      color: var(--primary-color) !important;
+    }
+  }
+}
+
+// Hero Section
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+    
+    &.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--text-light) 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .hero-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .info-item {
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-muted);
+    animation: bounce 2s infinite;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+// Sections
+.about-section {
+  background-color: var(--bg-dark);
+}
+
+.experience-section {
+  background-color: var(--bg-darker);
+}
+
+.skills-section {
+  background-color: var(--bg-dark);
+}
+
+.projects-section {
+  background-color: var(--bg-darker);
+}
+
+.education-section {
+  background-color: var(--bg-dark);
+}
+
+.contact-section {
+  background-color: var(--bg-darker);
+}
+
+.footer-section {
+  background-color: #0f172a;
+  border-top: 1px solid var(--border-color);
+}
+
+// Section Titles
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+  }
+}
+
+// Animation Classes
+.animate-in {
+  animation: slideInUp 0.8s ease forwards;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Experience Cards
+.experience-card {
+  opacity: 0;
+  transform: translateY(30px);
+  
+  &.animate-in {
+    animation: slideInUp 0.6s ease forwards;
+  }
+}
+
+// Skills Section
+.skills-card {
+  opacity: 0;
+  transform: translateY(30px);
+  
+  &.animate-in {
+    animation: slideInUp 0.6s ease forwards;
+  }
+}
+
+.skill-category {
+  .skills-tags {
+    .badge {
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+        background-color: var(--primary-color) !important;
+        color: white !important;
+      }
+    }
+  }
+}
+
+.soft-skill-item {
+  .skill-border {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-left-color: var(--primary-dark);
+      transform: translateX(5px);
+    }
+  }
+}
+
+// Projects Section
+.project-card {
+  opacity: 0;
+  transform: translateY(30px);
+  
+  &.animate-in {
+    animation: slideInUp 0.6s ease forwards;
+  }
+  
+  .technologies {
+    .badge {
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+        background-color: var(--primary-color) !important;
+        color: white !important;
+      }
+    }
+  }
+}
+
+// Education Section
+.education-card,
+.achievements-card {
+  opacity: 0;
+  transform: translateY(30px);
+  
+  &.animate-in {
+    animation: slideInUp 0.6s ease forwards;
+  }
+}
+
+.education-border {
+  border-left: 4px solid var(--primary-color);
+  padding-left: 1rem;
+}
+
+.education-border-secondary {
+  border-left: 4px solid var(--text-muted);
+  padding-left: 1rem;
+}
+
+.award-item {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateX(5px);
+  }
+}
+
+// Contact Section
+.contact-card {
+  opacity: 0;
+  transform: translateY(30px);
+  
+  &.animate-in {
+    animation: slideInUp 0.6s ease forwards;
+  }
+}
+
+.contact-item {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateX(5px);
+  }
+  
+  a {
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .hero-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    
+    .btn {
+      width: 200px;
+    }
+  }
+}
+
+// Smooth Scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
